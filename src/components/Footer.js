@@ -15,8 +15,6 @@ class Footer extends React.Component {
   render(){
        let footer=this.props.address;
        console.log(this.state.href);
-
-
       return (
         <div >
           <Container fluid>
