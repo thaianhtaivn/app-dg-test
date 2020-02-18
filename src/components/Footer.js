@@ -18,7 +18,9 @@ class Footer extends React.Component {
       return (
         <div >
           <Container fluid>
-            <Alert variant="custom-footer">{footer}</Alert>
+            <Alert variant="custom-footer">
+                <div className='move'>{footer}</div>
+            </Alert>
             <DropdownButton id="dropdown-basic-button" title="1">
               <Dropdown.Item>1</Dropdown.Item>
               <Dropdown.Item>2</Dropdown.Item>

@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Button, Navbar, Alert, Image, Row, Col, Container, Modal} from 'react-bootstrap';
 import 'react-notifications/lib/notifications.css';
-import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 class Rates extends React.Component {
   constructor(props) {
@@ -30,9 +29,11 @@ class Rates extends React.Component {
   }
 
   showAlert(rate){
+
     this.setState({showAlert: true})
     this.setState({rate: rate})
-    setTimeout(() => this.setState({showAlert: false}),3000)
+    setTimeout(() => this.setState({showAlert: false}),2000)
+    console.log(rate)
   }
   render(){
     const imagesrc = this.state.imagesrc;
@@ -49,26 +50,27 @@ class Rates extends React.Component {
     });
       return (
         <div>
-
-
           <Container fluid>
             <Row>
               {elmRate}
             </Row>
 
-                    <Modal show={this.state.showAlert} size='lg'>
-                      <Modal.Header bsPrefix='Rate'>
-                        <Modal.Title>
-                          <h2>CẢM ƠN QUÝ KHÁCH ĐÃ ĐÁNH GIÁ</h2>
-                        </Modal.Title>
-                      </Modal.Header>
-                      <Modal.Body>
-                      <div className='Rate'>
-                        Bạn vừa đánh giá: <strong> {this.state.rate}</strong>
-                      </div>
-                      </Modal.Body>
-                      </Modal>
           </Container>
+          <Container fluid>
+            <Modal  show={this.state.showAlert} size='lg'
+                    onHide={()=>{this.setState({showAlert:false})}}>
+              <Modal.Header bsPrefix='Rate'>
+                <Modal.Title>
+                  <strong><h2>CẢM ƠN QUÝ KHÁCH ĐÃ ĐÁNH GIÁ</h2></strong>
+                </Modal.Title>
+              </Modal.Header>
+              <Modal.Body bsPrefix='Rate'>
+                Bạn vừa đánh giá: <strong> {this.state.rate}</strong>
+              </Modal.Body>
+            </Modal>
+
+          </Container>
+
         </div>
 
     );

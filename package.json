@@ -9,6 +9,7 @@
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "react": "^16.12.0",
+    "react-animated-modal": "^1.1.1",
     "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.12.0",
     "react-notifications": "^1.4.3",
