@@ -17,18 +17,34 @@ class Header extends React.Component {
           counter: 2
         }
       ],
-      showSetting: false
+      showSetting: false,
+      user: '',
+      password:''
     };
     this.handleSetting=this.handleSetting.bind(this);
     this.handleLogin=this.handleLogin.bind(this);
-
+    this.handleChangeUser=this.handleChangeUser.bind(this);
+    this.handleChangePassword=this.handleChangePassword.bind(this);
   }
   handleSetting(){
-    this.setState({showSetting: !this.state.showSetting} );
+    this.setState({showSetting: !this.state.showSetting})
   }
   handleLogin(){
-    this.setState({showSetting: !this.state.showSetting} );
+    if((this.state.user)==='admin' && (this.state.password)==='admin' ){
+      console.log("OK")
 
+      this.setState({showSetting: !this.state.showSetting})
+      alert("Login Success")
+    }
+    else
+    console.log("Fail")
+
+  }
+  handleChangeUser(event){
+    this.setState({user: event.target.value});
+  }
+  handleChangePassword(event){
+    this.setState({password: event.target.value});
   }
   render(){
       const profile = this.state.profiles[0];
@@ -36,7 +52,7 @@ class Header extends React.Component {
       <div>
         <Container fluid>
             <Alert variant="custom-header">Vui lòng nhấn nút bình chọn
-              <Image  style={{"marginLeft": "65vw"}}
+              <Image  style={{"marginLeft": "64vw"}}
                       src='./logo192.png'
                       width={30}
                       onClick={this.handleSetting}>
@@ -58,22 +74,21 @@ class Header extends React.Component {
             <Modal.Title>Please Login!</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Form onSubmit={this.handleLogin}>
+            <Form>
               <Form.Group as={Row} controlId="formPlaintextEmail">
                 <Form.Label column sm="2"> <strong>User</strong> </Form.Label>
-                <Col><Form.Control placeholder="User" /></Col>
+                <Col><Form.Control placeholder="User" onChange={this.handleChangeUser}/></Col>
               </Form.Group>
-              <Form.Group as={Row} controlId="formPlaintextPassword">
+              <Form.Group as={Row} onChange={this.handleChangePassword}  >
                 <Form.Label column sm="2"> <strong>Password</strong> </Form.Label>
                 <Col><Form.Control type="password" placeholder="Password" /></Col>
               </Form.Group>
-              <Button type='submit' variant="primary">
-                Login
-              </Button>
             </Form>
           </Modal.Body>
           <Modal.Footer>
-
+            <Button onClick={this.handleLogin} variant="primary" type='submit'>
+              Login
+            </Button>
           </Modal.Footer>
         </Modal>
         </div>

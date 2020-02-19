@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Button, Navbar, Alert, Image, Row, Col, Container, Modal} from 'react-bootstrap';
-import 'react-notifications/lib/notifications.css';
 
 class Rates extends React.Component {
   constructor(props) {
