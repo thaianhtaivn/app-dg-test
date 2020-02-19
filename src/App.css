@@ -22,7 +22,7 @@
   background-color: rgb(9, 104, 65);
   color: white;
   overflow: hidden;
-
+  line-height: 1;
 }
 .move{
   animation: move 10s infinite linear;

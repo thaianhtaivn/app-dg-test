@@ -19,12 +19,15 @@ class Header extends React.Component {
       ],
       showSetting: false,
       user: '',
-      password:''
+      password:'',
+      counter:0
     };
     this.handleSetting=this.handleSetting.bind(this);
     this.handleLogin=this.handleLogin.bind(this);
     this.handleChangeUser=this.handleChangeUser.bind(this);
     this.handleChangePassword=this.handleChangePassword.bind(this);
+    this.handleChangeCounter=this.handleChangeCounter.bind(this);
+
   }
   handleSetting(){
     this.setState({showSetting: !this.state.showSetting})
@@ -46,8 +49,11 @@ class Header extends React.Component {
   handleChangePassword(event){
     this.setState({password: event.target.value});
   }
+  handleChangeCounter(event){
+    this.setState({counter: event.target.value - 1});
+  }
   render(){
-      const profile = this.state.profiles[0];
+      const profile = this.state.profiles[this.state.counter];
       return (
       <div>
         <Container fluid>
@@ -90,6 +96,14 @@ class Header extends React.Component {
               Login
             </Button>
           </Modal.Footer>
+          <Modal.Body>
+            <Form>
+              <Form.Group as={Row}>
+                <Form.Label column sm="3"> <strong>Chọn quầy:</strong> </Form.Label>
+                <Col><Form.Control placeholder={this.state.counter+1} onChange={this.handleChangeCounter}/></Col>
+              </Form.Group>
+            </Form>
+          </Modal.Body>
         </Modal>
         </div>
 
