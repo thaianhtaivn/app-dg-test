@@ -13,6 +13,7 @@ class Home extends React.Component {
       };
   }
   render(){
+    console.log("Hello");
     if(this.props.isHome){
       return null;
       }
@@ -20,12 +21,10 @@ class Home extends React.Component {
         <div>
 
             <Header/>
-
+            <hr/>
             <br/>
             <Rates/>
             <br/>
-            <br/>
-
             <Footer address={this.state.address} />
 
         </div>

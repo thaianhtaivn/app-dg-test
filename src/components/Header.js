@@ -7,14 +7,21 @@ class Header extends React.Component {
       this.state={
         profiles:[
           {
-          avatar: "./Image/140x180.png",
+          avatar: "./Image/Profile.png",
           name:'Nguyễn Văn A',
           counter: 1
-        },
-          {
-          avatar: "./Image/140x180.png",
+        },{
+          avatar: "./Image/VCB logo.png",
           name:'Nguyễn Văn B',
           counter: 2
+        },{
+        avatar: "./Image/140x180.png",
+        name:'Nguyễn Thị Nữ',
+        counter: 3
+      },{
+        avatar: "./Image/Profile2.png",
+        name:'Trần Văn Nam',
+        counter: 4
         }
       ],
       showSetting: false,
@@ -41,7 +48,6 @@ class Header extends React.Component {
     }
     else
     console.log("Fail")
-
   }
   handleChangeUser(event){
     this.setState({user: event.target.value});
@@ -53,20 +59,21 @@ class Header extends React.Component {
     this.setState({counter: event.target.value - 1});
   }
   render(){
-      const profile = this.state.profiles[this.state.counter];
+      let profile = this.state.profiles[this.state.counter];
       return (
       <div>
         <Container fluid>
             <Alert variant="custom-header">Vui lòng nhấn nút bình chọn
               <Image  style={{"marginLeft": "64vw"}}
+                      className="img-fluid"
                       src='./logo192.png'
                       width={30}
                       onClick={this.handleSetting}>
               </Image>
             </Alert>
-            <Row className='Avatar' >
+            <Row className='Avatar'>
               <Col sm={2}>
-                <Image  src={profile.avatar} rounded/>
+                <Image  src={profile.avatar}  width={"140vw"} height={"180vw"} rounded/>
               </Col>
               <Col className='TextTitle'>
                 <Row>Nhân viên: {profile.name}</Row>

@@ -6,16 +6,16 @@ class Rates extends React.Component {
     super(props);
       this.state={
         imagesrc:[{
-            scr:'./logo512.png',
+            scr:'./Excellent.png',
             rate: 'Excellent'
           },{
-            scr:'./logo512.png',
+            scr:'./Good.png',
             rate: 'Good'
             },{
-            scr:'./logo512.png',
+            scr:'./Normal.png',
             rate: 'Normal'
               },{
-            scr:'./logo512.png',
+            scr:'./Bad.png',
             rate: 'Bad'
                 }
         ],
@@ -41,9 +41,15 @@ class Rates extends React.Component {
         <Col>
           <Image
             className="img-fluid"
+
+            width={400}
             src={image.scr}
             onClick={()=>{this.showAlert(image.rate)}}
             rounded />
+            <h2 onClick={()=>{this.showAlert(image.rate)}}
+                className="Rate-Name">
+              {image.rate}
+            </h2>
         </Col>
       );
     });
