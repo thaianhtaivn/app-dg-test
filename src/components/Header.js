@@ -17,7 +17,7 @@ class Header extends React.Component {
           name:'Nguyễn Văn B',
           counter: 2
         },{
-        avatar: "./Image/140x180.png",
+        avatar: "./Image/women.png",
         name:'Nguyễn Thị Nữ',
         counter: 3
       },{

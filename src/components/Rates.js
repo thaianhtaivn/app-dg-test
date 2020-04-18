@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Button, Navbar, Alert, Image, Row, Col, Container, Modal} from 'react-bootstrap';
-
+import socketIOClient from "socket.io-client";
+var socket;
 class Rates extends React.Component {
   constructor(props) {
     super(props);
@@ -25,6 +26,17 @@ class Rates extends React.Component {
       };
       this.showAlert = this.showAlert.bind(this);
 
+  }
+
+  componentWillMount(){
+    socket.on('connect', () => {
+      // socket.on('Server-greeting',function(data){
+      //   // <h3>Server connected!</h3>
+      //   console.log(data);
+      //
+      // })
+      socket.emit("Client-counter",this.state.activecounter)
+    });
   }
 
   showAlert(rate){
