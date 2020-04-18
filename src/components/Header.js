@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {Button, Navbar, Alert, Image, Col, Row, Container, Modal, Form} from 'react-bootstrap';
+import {Dropdown, DropdownMenu} from 'react-bootstrap';
+
 
 class Header extends React.Component {
   constructor(props) {
@@ -7,11 +9,11 @@ class Header extends React.Component {
       this.state={
         profiles:[
           {
-          avatar: "./Image/Profile.png",
+          avatar: "./Image/man.png",
           name:'Nguyễn Văn A',
           counter: 1
         },{
-          avatar: "./Image/VCB logo.png",
+          avatar: "./Image/man2.png",
           name:'Nguyễn Văn B',
           counter: 2
         },{
@@ -19,9 +21,13 @@ class Header extends React.Component {
         name:'Nguyễn Thị Nữ',
         counter: 3
       },{
-        avatar: "./Image/Profile2.png",
+        avatar: "./Image/man.png",
         name:'Trần Văn Nam',
         counter: 4
+      },{
+        avatar: "./Image/women.png",
+        name:'Lê Thị Xuân',
+        counter: 5
         }
       ],
       showSetting: false,
@@ -55,11 +61,18 @@ class Header extends React.Component {
   handleChangePassword(event){
     this.setState({password: event.target.value});
   }
-  handleChangeCounter(event){
-    this.setState({counter: event.target.value - 1});
+  handleChangeCounter(evt){
+    this.setState({counter: evt-1});
   }
   render(){
       let profile = this.state.profiles[this.state.counter];
+
+      const usersrc = this.state.profiles;
+      const elmUser = usersrc.map((counter)=>{
+        return(
+          <div>{usersrc.counter}</div>
+        )
+      });
       return (
       <div>
         <Container fluid>
@@ -107,7 +120,21 @@ class Header extends React.Component {
             <Form>
               <Form.Group as={Row}>
                 <Form.Label column sm="3"> <strong>Chọn quầy:</strong> </Form.Label>
-                <Col><Form.Control placeholder={this.state.counter+1} onChange={this.handleChangeCounter}/></Col>
+                <Col>
+                  <Dropdown onSelect={this.handleChangeCounter}>
+                    <Dropdown.Toggle variant="success" id="dropdown-basic" >
+                      {this.state.counter+1}
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                          {this.state.profiles.map( (profiles)=>(
+                            <Dropdown.Item eventKey={profiles.counter} >
+                              {profiles.counter}
+                            </Dropdown.Item>
+                            )
+                          )}
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </Col>
               </Form.Group>
             </Form>
           </Modal.Body>
