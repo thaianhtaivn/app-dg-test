@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import {Button, Navbar, Alert, Image, Col, Row, Container, Modal, Form} from 'react-bootstrap';
 import {Dropdown, DropdownMenu} from 'react-bootstrap';
-
-
 class Header extends React.Component {
   constructor(props) {
     super(props);
@@ -63,6 +61,8 @@ class Header extends React.Component {
   }
   handleChangeCounter(evt){
     this.setState({counter: evt-1});
+    this.props.counter_num(evt)
+
   }
   render(){
       let profile = this.state.profiles[this.state.counter];

@@ -3,27 +3,39 @@ import {Button, ButtonGroup, Navbar, Image, Container, Row, Col} from 'react-boo
 import Header from './Header';
 import Footer from './Footer';
 import Rates from './Rates';
-
-
 class Home extends React.Component {
   constructor(props) {
     super(props);
       this.state={
-        address: '108 NGUYỄN DUY CUNG P12 GÒ VẤP'
+        address: '108 NGUYỄN DUY CUNG P12 GÒ VẤP',
+        counter:1,
+        message:null
       };
+      this.counter_num = this.counter_num.bind(this);
+      this.counter_rate = this.counter_rate.bind(this);
+
+  }
+  counter_num(num){
+    this.setState({counter:num})
+  }
+  counter_rate(rate){
+
+    console.log(this.state.counter+': '+rate);
+
   }
   render(){
-    console.log("Hello");
     if(this.props.isHome){
       return null;
       }
       return (
         <div>
 
-            <Header/>
+            <Header counter_num = {this.counter_num}/>
             <hr/>
             <br/>
-            <Rates/>
+            <Rates
+                   counter_rate = {this.counter_rate}
+            />
             <br/>
             <Footer address={this.state.address} />
 

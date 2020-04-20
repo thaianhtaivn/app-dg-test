@@ -9,33 +9,32 @@ class Rates extends React.Component {
         imagesrc:[{
             scr:'./Excellent.png',
             rate: 'Excellent'
-          },{
+              },{
             scr:'./Good.png',
             rate: 'Good'
-            },{
+              },{
             scr:'./Normal.png',
             rate: 'Normal'
               },{
             scr:'./Bad.png',
             rate: 'Bad'
-                }
+              }
         ],
         showAlert: false,
-        rate: null
-
+        rate: null,
+        endpoint: "localhost:8888"
       };
       this.showAlert = this.showAlert.bind(this);
-
+      socket = socketIOClient(this.state.endpoint);
   }
-
   componentWillMount(){
     socket.on('connect', () => {
-      // socket.on('Server-greeting',function(data){
-      //   // <h3>Server connected!</h3>
-      //   console.log(data);
-      //
-      // })
-      socket.emit("Client-counter",this.state.activecounter)
+      socket.on('Server-greeting',function(data){
+        // <h3>Server connected!</h3>
+        console.log(data);
+
+      })
+      socket.emit("Client-counter",this.state.counter)
     });
   }
 
@@ -44,7 +43,8 @@ class Rates extends React.Component {
     this.setState({showAlert: true})
     this.setState({rate: rate})
     setTimeout(() => this.setState({showAlert: false}),2000)
-    console.log(rate)
+    socket.emit("Client-send-data",rate)
+    this.props.counter_rate(rate)
   }
   render(){
     const imagesrc = this.state.imagesrc;

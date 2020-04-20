@@ -27,7 +27,7 @@ io.on('connect', socket => {
 	socket.on('Client-send-data', function(data){
 		socket.emit("Update","ok")
 		console.log(data);
-		// client.write(data+'\r\n');
+		client.write(data+'\r\n');
 });
 
 socket.on('disconnect', () => {
