@@ -1,24 +1,39 @@
 import React, {Component} from 'react';
+import socketIOClient from "socket.io-client";
+
 import {Button, ButtonGroup, Navbar, Image, Container, Row, Col} from 'react-bootstrap';
 import Header from './Header';
 import Footer from './Footer';
 import Rates from './Rates';
+var socket;
 class Home extends React.Component {
   constructor(props) {
     super(props);
       this.state={
         address: '108 NGUYỄN DUY CUNG P12 GÒ VẤP',
         counter:1,
-        message:null
+        endpoint: "localhost:8888"
       };
       this.counter_num = this.counter_num.bind(this);
       this.counter_rate = this.counter_rate.bind(this);
+      socket = socketIOClient(this.state.endpoint);
 
+  }
+  componentWillMount(){
+    socket.on('connect', () => {
+      socket.on('Server-greeting',function(data){
+        // <h3>Server connected!</h3>
+        console.log(data);
+
+      })
+      socket.emit("Client-counter",this.state.counter)
+    });
   }
   counter_num(num){
     this.setState({counter:num})
   }
   counter_rate(rate){
+    socket.emit("Client-send-data",this.state.counter+': '+rate)
 
     console.log(this.state.counter+': '+rate);
 

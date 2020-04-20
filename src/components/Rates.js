@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import {Button, Navbar, Alert, Image, Row, Col, Container, Modal} from 'react-bootstrap';
-import socketIOClient from "socket.io-client";
-var socket;
 class Rates extends React.Component {
   constructor(props) {
     super(props);
@@ -21,29 +19,14 @@ class Rates extends React.Component {
               }
         ],
         showAlert: false,
-        rate: null,
-        endpoint: "localhost:8888"
+        rate: null
       };
       this.showAlert = this.showAlert.bind(this);
-      socket = socketIOClient(this.state.endpoint);
   }
-  componentWillMount(){
-    socket.on('connect', () => {
-      socket.on('Server-greeting',function(data){
-        // <h3>Server connected!</h3>
-        console.log(data);
-
-      })
-      socket.emit("Client-counter",this.state.counter)
-    });
-  }
-
   showAlert(rate){
-
     this.setState({showAlert: true})
     this.setState({rate: rate})
     setTimeout(() => this.setState({showAlert: false}),2000)
-    socket.emit("Client-send-data",rate)
     this.props.counter_rate(rate)
   }
   render(){
