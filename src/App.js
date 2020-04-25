@@ -1,7 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import {Button, ButtonGroup, Navbar, Image, Container, Row, Col, Form, Alert} from 'react-bootstrap';
 import Demo from './components/Demo';
 import Home from './components/Home';
 import Config from './components/Config';

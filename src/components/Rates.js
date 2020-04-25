@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Button, Navbar, Alert, Image, Row, Col, Container, Modal} from 'react-bootstrap';
+import { Image, Row, Col, Container, Modal} from 'react-bootstrap';
 class Rates extends React.Component {
   constructor(props) {
     super(props);

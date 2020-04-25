@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Container, Button, Navbar, Alert, DropdownButton, Dropdown} from 'react-bootstrap';
+import {Container,Alert} from 'react-bootstrap';
 
 class Footer extends React.Component {
   constructor(props) {

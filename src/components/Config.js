@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Button, Container, Row, Col, Form} from 'react-bootstrap';
+import {Button, Form} from 'react-bootstrap';
 class Config extends React.Component{
   constructor(props) {
     super(props);

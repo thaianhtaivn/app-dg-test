@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {Button, Navbar, Alert, Image, Col, Row, Container, Modal, Form} from 'react-bootstrap';
-import {Dropdown, DropdownMenu} from 'react-bootstrap';
+import {Button, Alert, Image, Col, Row, Container, Modal, Form} from 'react-bootstrap';
+import {Dropdown} from 'react-bootstrap';
 class Header extends React.Component {
   constructor(props) {
     super(props);
@@ -66,13 +66,6 @@ class Header extends React.Component {
   }
   render(){
       let profile = this.state.profiles[this.state.counter];
-
-      const usersrc = this.state.profiles;
-      const elmUser = usersrc.map((counter)=>{
-        return(
-          <div>{usersrc.counter}</div>
-        )
-      });
       return (
       <div>
         <Container fluid>
